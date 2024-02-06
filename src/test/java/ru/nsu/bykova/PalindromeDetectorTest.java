@@ -1,5 +1,8 @@
 package ru.nsu.bykova;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,37 +11,34 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class PalindromeDetectorTest {
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
-    void palindromeEvenLenTest(IPalindromeDetector palindromeDetector){
+    void palindromeEvenLenTest(PalindromeDetector palindromeDetector){
         assertTrue(palindromeDetector.isPalindrome("abba".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
-    void palindromeNotEvenLenTest(IPalindromeDetector palindromeDetector){
+    void palindromeNotEvenLenTest(PalindromeDetector palindromeDetector){
         assertTrue(palindromeDetector.isPalindrome("ababa".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
-    void notPalindromeEvenLenTest(IPalindromeDetector palindromeDetector){
+    void notPalindromeEvenLenTest(PalindromeDetector palindromeDetector){
         assertFalse(palindromeDetector.isPalindrome("abab".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
-    void notPalindromeNotEvenLenTest(IPalindromeDetector palindromeDetector){
+    void notPalindromeNotEvenLenTest(PalindromeDetector palindromeDetector){
         assertFalse(palindromeDetector.isPalindrome("ababb".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
-    void emptyTest(IPalindromeDetector palindromeDetector){
+    void emptyTest(PalindromeDetector palindromeDetector){
         assertTrue(palindromeDetector.isPalindrome("".toCharArray()));
     }
 

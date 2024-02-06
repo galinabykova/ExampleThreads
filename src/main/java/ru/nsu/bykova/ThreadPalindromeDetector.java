@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Параллельное решение.
  */
-public class ThreadPalindromeDetector implements IPalindromeDetector {
+public class ThreadPalindromeDetector implements PalindromeDetector {
     private int threadNumber;
 
     public ThreadPalindromeDetector(int threadNumber) {

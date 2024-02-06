@@ -5,7 +5,7 @@ import java.nio.CharBuffer;
 /**
  * Последовательное решение.
  */
-public class SequentialPalindromeDetector implements IPalindromeDetector {
+public class SequentialPalindromeDetector implements PalindromeDetector {
     @Override
     public boolean isPalindrome(char[] string) {
         int stringLengthHalf = string.length / 2;
