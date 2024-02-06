@@ -48,7 +48,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          folder: /build/docs/javadoc
+          folder: ./build/docs/javadoc
           target-folder: ${{ github.event.pull_request.title }}
 
   checkstyle:
