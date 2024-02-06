@@ -9,7 +9,7 @@ class TaskDelimiter {
         this.threadNumber = threadNumber;
     }
 
-    int LenThreadPart(int threadIndex) throws IllegalArgumentException {
+    int lenThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
         if (threadIndex < taskNumber % threadNumber) {
             return taskNumber / threadNumber + 1;
@@ -17,7 +17,7 @@ class TaskDelimiter {
         return taskNumber / threadNumber;
     }
 
-    int OffsetThreadPart(int threadIndex) throws IllegalArgumentException {
+    int offsetThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
         if (threadIndex < taskNumber % threadNumber) {
             return taskNumber / threadNumber * threadIndex + threadIndex;

@@ -1,7 +1,7 @@
 package ru.nsu.bykova;
 
 class PalindromeDetectorUtils {
-    static boolean IsPartPalindrome(CharSequence leftStringPart, CharSequence rightStringPart) {
+    static boolean isPartPalindrome(CharSequence leftStringPart, CharSequence rightStringPart) {
         if (leftStringPart.length() != rightStringPart.length()) {
             return false;
         }

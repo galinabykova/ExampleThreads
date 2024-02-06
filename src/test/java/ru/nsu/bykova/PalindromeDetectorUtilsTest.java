@@ -11,7 +11,7 @@ class PalindromeDetectorUtilsTest {
     @Test
     void palindromeTest() {
         char[] palindrome = "abba".toCharArray();
-        assertTrue(PalindromeDetectorUtils.IsPartPalindrome(
+        assertTrue(PalindromeDetectorUtils.isPartPalindrome(
                 CharBuffer.wrap(palindrome, 0, 2),
                 CharBuffer.wrap(palindrome, 2, 2)
         ));
@@ -20,7 +20,7 @@ class PalindromeDetectorUtilsTest {
     @Test
     void notPalindromeTest() {
         char[] palindrome = "abab".toCharArray();
-        assertFalse(PalindromeDetectorUtils.IsPartPalindrome(
+        assertFalse(PalindromeDetectorUtils.isPartPalindrome(
                 CharBuffer.wrap(palindrome, 0, 2),
                 CharBuffer.wrap(palindrome, 2, 2)
         ));
@@ -29,7 +29,7 @@ class PalindromeDetectorUtilsTest {
     @Test
     void emptyTest() {
         char[] palindrome = "".toCharArray();
-        assertTrue(PalindromeDetectorUtils.IsPartPalindrome(
+        assertTrue(PalindromeDetectorUtils.isPartPalindrome(
                 CharBuffer.wrap(palindrome, 0, 0),
                 CharBuffer.wrap(palindrome, 0, 0)
         ));
@@ -37,7 +37,7 @@ class PalindromeDetectorUtilsTest {
 
     @Test
     void differentLengthTest() {
-        assertFalse(PalindromeDetectorUtils.IsPartPalindrome(
+        assertFalse(PalindromeDetectorUtils.isPartPalindrome(
                 CharBuffer.wrap("lya", 0, 3),
                 CharBuffer.wrap("myaNya", 0, 6)
         ));

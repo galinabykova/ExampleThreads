@@ -11,7 +11,7 @@ public class ThreadPalindromeDetector implements IPalindromeDetector {
     }
 
     @Override
-    public boolean IsPalindrome(char[] string) {
+    public boolean isPalindrome(char[] string) {
         final int halfLen = string.length / 2;
         // можно ли здесь делать общий taskDelimiter для всех потоков?
         final var taskDelimiter = new TaskDelimiter(halfLen, threadNumber);
@@ -20,9 +20,9 @@ public class ThreadPalindromeDetector implements IPalindromeDetector {
         for (int threadIndex = 0; threadIndex < threadNumber; ++threadIndex) {
             final int currentIndex = threadIndex;
             threads[currentIndex] = new Thread(() -> {
-                int myLen = taskDelimiter.LenThreadPart(currentIndex);
-                int myOffset = taskDelimiter.OffsetThreadPart(currentIndex);
-                boolean threadResult = PalindromeDetectorUtils.IsPartPalindrome(
+                int myLen = taskDelimiter.lenThreadPart(currentIndex);
+                int myOffset = taskDelimiter.offsetThreadPart(currentIndex);
+                boolean threadResult = PalindromeDetectorUtils.isPartPalindrome(
                         CharBuffer.wrap(string, myOffset, myLen),
                         CharBuffer.wrap(string, string.length - myOffset - 1, myLen)
                 );

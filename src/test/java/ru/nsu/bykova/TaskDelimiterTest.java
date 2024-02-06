@@ -1,6 +1,5 @@
 package ru.nsu.bykova;
 
-import jdk.jfr.Name;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -22,9 +21,9 @@ public class TaskDelimiterTest {
                              int zerothThreadsTaskNumber, int firstThreadTaskNumber, int secondThreadTaskNumber) {
         int threadNumber = 3;
         var taskDelimiter = new TaskDelimiter(taskNumber, threadNumber);
-        assertEquals(zerothThreadsTaskNumber, taskDelimiter.LenThreadPart(0));
-        assertEquals(firstThreadTaskNumber, taskDelimiter.LenThreadPart(1));
-        assertEquals(secondThreadTaskNumber, taskDelimiter.LenThreadPart(2));
+        assertEquals(zerothThreadsTaskNumber, taskDelimiter.lenThreadPart(0));
+        assertEquals(firstThreadTaskNumber, taskDelimiter.lenThreadPart(1));
+        assertEquals(secondThreadTaskNumber, taskDelimiter.lenThreadPart(2));
     }
 
     @ParameterizedTest(name =
@@ -41,9 +40,9 @@ public class TaskDelimiterTest {
                  int zerothThreadsTaskNumber, int firstThreadTaskNumber, int secondThreadTaskNumber) {
         int threadNumber = 3;
         var taskDelimiter = new TaskDelimiter(taskNumber, threadNumber);
-        assertEquals(zerothThreadsTaskNumber, taskDelimiter.OffsetThreadPart(0));
-        assertEquals(firstThreadTaskNumber, taskDelimiter.OffsetThreadPart(1));
-        assertEquals(secondThreadTaskNumber, taskDelimiter.OffsetThreadPart(2));
+        assertEquals(zerothThreadsTaskNumber, taskDelimiter.offsetThreadPart(0));
+        assertEquals(firstThreadTaskNumber, taskDelimiter.offsetThreadPart(1));
+        assertEquals(secondThreadTaskNumber, taskDelimiter.offsetThreadPart(2));
     }
 
     @ParameterizedTest(name = "taskNumber = {0},threadNumber = {1}, threadIndex = {2}")
@@ -54,7 +53,7 @@ public class TaskDelimiterTest {
     })
     void invalidArgument(int taskNumber, int threadNumber, int threadIndex) {
         var taskDelimiter = new TaskDelimiter(taskNumber, threadNumber);
-        assertThrows(IllegalArgumentException.class, () -> taskDelimiter.LenThreadPart(threadIndex));
-        assertThrows(IllegalArgumentException.class, () -> taskDelimiter.OffsetThreadPart(threadIndex));
+        assertThrows(IllegalArgumentException.class, () -> taskDelimiter.lenThreadPart(threadIndex));
+        assertThrows(IllegalArgumentException.class, () -> taskDelimiter.offsetThreadPart(threadIndex));
     }
 }

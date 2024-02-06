@@ -15,31 +15,31 @@ public class PalindromeDetectorTest {
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void palindromeEvenLenTest(IPalindromeDetector palindromeDetector){
-        assertTrue(palindromeDetector.IsPalindrome("abba".toCharArray()));
+        assertTrue(palindromeDetector.isPalindrome("abba".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void palindromeNotEvenLenTest(IPalindromeDetector palindromeDetector){
-        assertTrue(palindromeDetector.IsPalindrome("ababa".toCharArray()));
+        assertTrue(palindromeDetector.isPalindrome("ababa".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void notPalindromeEvenLenTest(IPalindromeDetector palindromeDetector){
-        assertFalse(palindromeDetector.IsPalindrome("abab".toCharArray()));
+        assertFalse(palindromeDetector.isPalindrome("abab".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void notPalindromeNotEvenLenTest(IPalindromeDetector palindromeDetector){
-        assertFalse(palindromeDetector.IsPalindrome("ababb".toCharArray()));
+        assertFalse(palindromeDetector.isPalindrome("ababb".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void emptyTest(IPalindromeDetector palindromeDetector){
-        assertTrue(palindromeDetector.IsPalindrome("".toCharArray()));
+        assertTrue(palindromeDetector.isPalindrome("".toCharArray()));
     }
 
     static class PalindromeDetectorProvider implements ArgumentsProvider {
