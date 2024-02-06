@@ -9,6 +9,9 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.stream.Stream;
 
+/**
+ * Тесты для PalindromeDetector.
+ */
 public class PalindromeDetectorTest {
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
