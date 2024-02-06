@@ -16,7 +16,7 @@ class TaskDelimiter {
      * Длина кусочка, который считает поток с номером threadIndex.
      *
      * @param threadIndex от 0
-     * @throws IllegalArgumentException если threadIndex отрицательно или больше или равно threadNumber.
+     * @throws IllegalArgumentException если threadIndex <0 или >=threadNumber.
      */
     int lenThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
@@ -30,7 +30,7 @@ class TaskDelimiter {
      * Длина кусочка, который считает поток с номером threadIndex.
      *
      * @param threadIndex от 0
-     * @throws IllegalArgumentException если threadIndex отрицательно или больше или равно threadNumber.
+     * @throws IllegalArgumentException если threadIndex <0 или >=threadNumber.
      */
     int offsetThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);

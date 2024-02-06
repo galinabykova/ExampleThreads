@@ -1,8 +1,6 @@
 package ru.nsu.bykova;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,31 +13,31 @@ public class PalindromeDetectorTest {
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void palindromeEvenLenTest(PalindromeDetector palindromeDetector){
-        assertTrue(palindromeDetector.isPalindrome("abba".toCharArray()));
+        Assertions.assertTrue(palindromeDetector.isPalindrome("abba".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void palindromeNotEvenLenTest(PalindromeDetector palindromeDetector){
-        assertTrue(palindromeDetector.isPalindrome("ababa".toCharArray()));
+        Assertions.assertTrue(palindromeDetector.isPalindrome("ababa".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void notPalindromeEvenLenTest(PalindromeDetector palindromeDetector){
-        assertFalse(palindromeDetector.isPalindrome("abab".toCharArray()));
+        Assertions.assertFalse(palindromeDetector.isPalindrome("abab".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void notPalindromeNotEvenLenTest(PalindromeDetector palindromeDetector){
-        assertFalse(palindromeDetector.isPalindrome("ababb".toCharArray()));
+        Assertions.assertFalse(palindromeDetector.isPalindrome("ababb".toCharArray()));
     }
 
     @ParameterizedTest()
     @ArgumentsSource(PalindromeDetectorProvider.class)
     void emptyTest(PalindromeDetector palindromeDetector){
-        assertTrue(palindromeDetector.isPalindrome("".toCharArray()));
+        Assertions.assertTrue(palindromeDetector.isPalindrome("".toCharArray()));
     }
 
     static class PalindromeDetectorProvider implements ArgumentsProvider {
