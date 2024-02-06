@@ -13,10 +13,11 @@ class TaskDelimiter {
     }
 
     /**
-     * длина кусочка, который считает поток с номером threadIndex
+     * Длина кусочка, который считает поток с номером threadIndex
+     *
      * @param threadIndex от 0
-     * @throws IllegalArgumentException,
-     * если threadIndex отрицательно или больше или равно threadNumber
+     * @throws IllegalArgumentException
+     * если threadIndex отрицательно или больше или равно threadNumber.
      */
     int lenThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
@@ -27,9 +28,11 @@ class TaskDelimiter {
     }
 
     /**
-     * длина кусочка, который считает поток с номером threadIndex
+     * Длина кусочка, который считает поток с номером threadIndex
+     *
      * @param threadIndex от 0
-     * если threadIndex отрицательно или больше или равно threadNumber
+     * @throws IllegalArgumentException
+     * если threadIndex отрицательно или больше или равно threadNumber.
      */
     int offsetThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
@@ -46,7 +49,8 @@ class TaskDelimiter {
             // https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#setUncaughtExceptionHandler-java.lang.Thread.UncaughtExceptionHandler-
             // https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#setDefaultUncaughtExceptionHandler-java.lang.Thread.UncaughtExceptionHandler-
             // как это работает, можно посмотреть, например, http://www-public.imtbs-tsp.eu/~gibson/Teaching/CSC7322/L8-ExceptionsAndThreads.pdf на 32 слайде
-            throw new IllegalArgumentException(String.format("threadIndex can be in [0, %d)", threadNumber));
+            var message = String.format("threadIndex can be in [0, %d)", threadNumber);
+            throw new IllegalArgumentException(message);
         }
         if (threadIndex < 0) {
             throw new IllegalArgumentException("threadIndex < 0");

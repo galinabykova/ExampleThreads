@@ -9,8 +9,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ThreadPalindromeDetector implements IPalindromeDetector {
     private int threadNumber;
 
-    public ThreadPalindromeDetector(int thread_number) {
-        this.threadNumber = thread_number;
+    public ThreadPalindromeDetector(int threadNumber) {
+        this.threadNumber = threadNumber;
     }
 
     @Override
