@@ -3,8 +3,11 @@ package ru.nsu.bykova;
 import java.nio.CharBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Параллельное решение
+ */
 public class ThreadPalindromeDetector implements IPalindromeDetector {
-    int threadNumber;
+    private int threadNumber;
 
     public ThreadPalindromeDetector(int thread_number) {
         this.threadNumber = thread_number;

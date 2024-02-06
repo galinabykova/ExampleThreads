@@ -1,5 +1,8 @@
 package ru.nsu.bykova;
 
+/**
+ * Класс, разделяющий задачи между потоками
+ */
 class TaskDelimiter {
     private final int taskNumber;
     private final int threadNumber;
@@ -9,6 +12,12 @@ class TaskDelimiter {
         this.threadNumber = threadNumber;
     }
 
+    /**
+     * длина кусочка, который считает поток с номером threadIndex
+     * @param threadIndex от 0
+     * @throws IllegalArgumentException,
+     * если threadIndex отрицательно или больше или равно threadNumber
+     */
     int lenThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
         if (threadIndex < taskNumber % threadNumber) {
@@ -17,6 +26,11 @@ class TaskDelimiter {
         return taskNumber / threadNumber;
     }
 
+    /**
+     * длина кусочка, который считает поток с номером threadIndex
+     * @param threadIndex от 0
+     * если threadIndex отрицательно или больше или равно threadNumber
+     */
     int offsetThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
         if (threadIndex < taskNumber % threadNumber) {

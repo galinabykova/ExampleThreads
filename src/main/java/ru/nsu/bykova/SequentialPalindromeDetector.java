@@ -2,6 +2,9 @@ package ru.nsu.bykova;
 
 import java.nio.CharBuffer;
 
+/**
+ * Последовательное решение
+ */
 public class SequentialPalindromeDetector implements IPalindromeDetector {
     @Override
     public boolean isPalindrome(char[] string) {

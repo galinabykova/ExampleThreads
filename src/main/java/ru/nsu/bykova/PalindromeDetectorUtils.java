@@ -1,5 +1,9 @@
 package ru.nsu.bykova;
 
+/**
+ * Полезные функции, которые нужны
+ * и в последовательном, и в параллельном решении
+ */
 class PalindromeDetectorUtils {
     static boolean isPartPalindrome(CharSequence leftStringPart, CharSequence rightStringPart) {
         if (leftStringPart.length() != rightStringPart.length()) {
