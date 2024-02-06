@@ -3,7 +3,7 @@ package ru.nsu.bykova;
 import java.nio.CharBuffer;
 
 /**
- * Последовательное решение
+ * Последовательное решение.
  */
 public class SequentialPalindromeDetector implements IPalindromeDetector {
     @Override

@@ -2,7 +2,7 @@ package ru.nsu.bykova;
 
 /**
  * Полезные функции, которые нужны
- * и в последовательном, и в параллельном решении
+ * и в последовательном, и в параллельном решении.
  */
 class PalindromeDetectorUtils {
     static boolean isPartPalindrome(CharSequence leftStringPart, CharSequence rightStringPart) {
@@ -13,9 +13,10 @@ class PalindromeDetectorUtils {
         for (int currentPositionInLeftPart = 0;
              currentPositionInLeftPart < stringPartLength;
              ++currentPositionInLeftPart) {
-            if (leftStringPart.charAt(currentPositionInLeftPart) !=
-            rightStringPart.charAt(stringPartLength - currentPositionInLeftPart - 1))
+            if (leftStringPart.charAt(currentPositionInLeftPart)
+                    != rightStringPart.charAt(stringPartLength - currentPositionInLeftPart - 1)) {
                 return false;
+            }
         }
         return true;
     }

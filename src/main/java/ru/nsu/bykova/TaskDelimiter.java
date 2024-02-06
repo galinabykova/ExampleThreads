@@ -1,7 +1,7 @@
 package ru.nsu.bykova;
 
 /**
- * Класс, разделяющий задачи между потоками
+ * Класс, разделяющий задачи между потоками.
  */
 class TaskDelimiter {
     private final int taskNumber;

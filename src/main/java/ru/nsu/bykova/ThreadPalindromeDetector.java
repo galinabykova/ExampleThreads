@@ -4,7 +4,7 @@ import java.nio.CharBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Параллельное решение
+ * Параллельное решение.
  */
 public class ThreadPalindromeDetector implements IPalindromeDetector {
     private int threadNumber;
