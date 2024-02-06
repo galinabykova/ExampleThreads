@@ -9,13 +9,13 @@ import org.junit.jupiter.params.provider.CsvSource;
  */
 public class TaskDelimiterTest {
     @ParameterizedTest(name =
-            "taskNumber = {0},zerothThreadsTaskNumber = {1}," +
-                    "firstThreadTaskNumber = {2}, secondThreadTaskNumber = {3}")
+            "taskNumber = {0},zerothThreadsTaskNumber = {1},"
+                    + "firstThreadTaskNumber = {2}, secondThreadTaskNumber = {3}")
     @CsvSource({
-                "9 , 3, 3, 3",
-                "3 , 1, 1, 1",
-            "15, 5, 5, 5",
-            "10, 4, 3, 3",
+        "9 , 3, 3, 3",
+        "3 , 1, 1, 1",
+        "15, 5, 5, 5",
+        "10, 4, 3, 3",
             "11, 4, 4, 3",
             "1 , 1, 0, 0"
     })
