@@ -1,9 +1,8 @@
 package ru.nsu.bykova;
 
+import java.nio.CharBuffer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.nio.CharBuffer;
 
 /**
  * Тесты для PalindromeDetectorUtils.
