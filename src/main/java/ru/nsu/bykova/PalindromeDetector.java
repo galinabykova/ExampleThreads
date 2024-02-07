@@ -5,5 +5,5 @@ package ru.nsu.bykova;
  * оба решения - последовательное и параллельное.
  */
 public interface PalindromeDetector {
-    public boolean isPalindrome(char[] string);
+    public boolean isPalindrome(String string);
 }
