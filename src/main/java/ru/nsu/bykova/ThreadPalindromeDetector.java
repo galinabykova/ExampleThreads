@@ -23,6 +23,7 @@ public class ThreadPalindromeDetector implements PalindromeDetector {
         Thread[] threads = new Thread[threadNumber];
         for (int threadIndex = 0; threadIndex < threadNumber; ++threadIndex) {
             final int currentIndex = threadIndex;
+            // создаём новый поток. Его статус будет - NEW. Пока он не запущен
             threads[currentIndex] =
                     new Thread(
                             () -> {
@@ -42,6 +43,10 @@ public class ThreadPalindromeDetector implements PalindromeDetector {
                                 // а что, если в самом начале выяснилось, что не палиндром?
                                 // можно время от времени проверять, что result всё ещё истина
                             });
+            // исключения остаются в потоке, где были брошены
+            // можем указать, что делать, если в процессе выполнения
+            // в потоке было брошено неперехваченное исключение
+            // хендлер будет исполнен в том же потоке, где было брошено исключение
             threads[currentIndex].setUncaughtExceptionHandler(
                     (thread, exception) -> {
                         // https://stackoverflow.com/questions/9459657/is-multi-thread-output-from-system-out-println-interleaved
@@ -53,9 +58,14 @@ public class ThreadPalindromeDetector implements PalindromeDetector {
                             // https://stackoverflow-com.translate.goog/questions/6546193/how-to-catch-an-exception-from-a-thread?_x_tr_sl=en&_x_tr_tl=ru&_x_tr_hl=ru&_x_tr_pto=sc
                         }
                     });
+            // наконец-то запускаем поток
+            // здесь меняется его статус
+            // после начала работы этого метода
+            // поток начнёт выполняться
             threads[currentIndex].start();
         }
         try {
+            // ожидаем, пока потоки выполнят свою работу
             // тут главный поток ждёт, но можно его тоже загрузить было
             for (int threadIndex = 0; threadIndex < threadNumber; ++threadIndex) {
                 threads[threadIndex].join();

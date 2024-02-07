@@ -58,7 +58,8 @@ public class PalindromeDetectorTest {
             return Stream.of(
                     Arguments.of(new SequentialPalindromeDetector()),
                     Arguments.of(new ThreadPalindromeDetector(1)),
-                    Arguments.of(new ThreadPalindromeDetector(2)));
+                    Arguments.of(new ThreadPalindromeDetector(2)),
+                    Arguments.of(new ThreadPalindromeDetector(3)));
         }
     }
 }
