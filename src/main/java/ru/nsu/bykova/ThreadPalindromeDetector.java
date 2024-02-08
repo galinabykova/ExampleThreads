@@ -24,8 +24,7 @@ public class ThreadPalindromeDetector implements PalindromeDetector {
         for (int threadIndex = 0; threadIndex < threadCount; ++threadIndex) {
             final int currentIndex = threadIndex;
             // создаём новый поток. Его статус будет - NEW. Пока он не запущен
-            threads[currentIndex] = CreateThread(currentIndex, string,
-                    taskDelimiter, result);
+            threads[currentIndex] = createThread(currentIndex, string, taskDelimiter, result);
             // здесь меняется его статус
             // после начала работы этого метода
             // поток начнёт выполняться
@@ -45,26 +44,27 @@ public class ThreadPalindromeDetector implements PalindromeDetector {
         return result.get();
     }
 
-    private Thread CreateThread(int currentIndex, String string,
-                                TaskDelimiter taskDelimiter, AtomicBoolean result) {
-        var currentThread = new Thread(
-                () -> {
-                    // чтобы поэкспериментировать, как будет работать программа
-                    // при выбросе исключения потоком
-                    // можете в строке ниже заменить currentIndex на -1
-                    int myLen = taskDelimiter.lenThreadPart(currentIndex);
-                    int myOffset = taskDelimiter.offsetThreadPart(currentIndex);
-                    boolean threadResult =
-                            PalindromeDetectorUtils.isPartPalindrome(
-                                    CharBuffer.wrap(string, myOffset, myOffset + myLen),
-                                    CharBuffer.wrap(
-                                            string,
-                                            string.length() - myOffset - myLen,
-                                            string.length() - myOffset));
-                    result.compareAndExchange(true, threadResult);
-                    // а что, если в самом начале выяснилось, что не палиндром?
-                    // можно время от времени проверять, что result всё ещё истина
-                });
+    private Thread createThread(
+            int currentIndex, String string, TaskDelimiter taskDelimiter, AtomicBoolean result) {
+        var currentThread =
+                new Thread(
+                        () -> {
+                            // чтобы поэкспериментировать, как будет работать программа
+                            // при выбросе исключения потоком
+                            // можете в строке ниже заменить currentIndex на -1
+                            int myLen = taskDelimiter.lenThreadPart(currentIndex);
+                            int myOffset = taskDelimiter.offsetThreadPart(currentIndex);
+                            boolean threadResult =
+                                    PalindromeDetectorUtils.isPartPalindrome(
+                                            CharBuffer.wrap(string, myOffset, myOffset + myLen),
+                                            CharBuffer.wrap(
+                                                    string,
+                                                    string.length() - myOffset - myLen,
+                                                    string.length() - myOffset));
+                            result.compareAndExchange(true, threadResult);
+                            // а что, если в самом начале выяснилось, что не палиндром?
+                            // можно время от времени проверять, что result всё ещё истина
+                        });
         // исключения остаются в потоке, где были брошены
         // можем указать, что делать, если в процессе выполнения
         // в потоке было брошено неперехваченное исключение
