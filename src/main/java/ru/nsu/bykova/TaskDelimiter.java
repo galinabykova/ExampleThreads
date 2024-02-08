@@ -8,12 +8,12 @@ class TaskDelimiter {
     // потому что создание потока имеет накладные расходы
     // но если задачи сложно поделить по потокам
     // можно, например, использовать ThreadPool
-    private final int taskNumber;
-    private final int threadNumber;
+    private final int taskCount;
+    private final int threadCount;
 
-    TaskDelimiter(int taskNumber, int threadNumber) {
-        this.taskNumber = taskNumber;
-        this.threadNumber = threadNumber;
+    TaskDelimiter(int taskCount, int threadCount) {
+        this.taskCount = taskCount;
+        this.threadCount = threadCount;
     }
 
     /**
@@ -24,10 +24,10 @@ class TaskDelimiter {
      */
     int lenThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
-        if (threadIndex < taskNumber % threadNumber) {
-            return taskNumber / threadNumber + 1;
+        if (threadIndex < taskCount % threadCount) {
+            return taskCount / threadCount + 1;
         }
-        return taskNumber / threadNumber;
+        return taskCount / threadCount;
     }
 
     /**
@@ -38,14 +38,14 @@ class TaskDelimiter {
      */
     int offsetThreadPart(int threadIndex) throws IllegalArgumentException {
         checkArguments(threadIndex);
-        if (threadIndex < taskNumber % threadNumber) {
-            return taskNumber / threadNumber * threadIndex + threadIndex;
+        if (threadIndex < taskCount % threadCount) {
+            return taskCount / threadCount * threadIndex + threadIndex;
         }
-        return taskNumber / threadNumber * threadIndex + taskNumber % threadNumber;
+        return taskCount / threadCount * threadIndex + taskCount % threadCount;
     }
 
     void checkArguments(int threadIndex) throws IllegalArgumentException {
-        if (threadIndex >= threadNumber) {
+        if (threadIndex >= threadCount) {
             // что там с выбрасыванием исключений из потока?
             // https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html#run-- не
             // выбрасывает
@@ -56,7 +56,7 @@ class TaskDelimiter {
             // http://www-public.imtbs-tsp.eu/~gibson/Teaching/CSC7322/L8-ExceptionsAndThreads.pdf
             // на 32
             // слайде
-            var message = String.format("threadIndex can be in [0, %d)", threadNumber);
+            var message = String.format("threadIndex can be in [0, %d)", threadCount);
             throw new IllegalArgumentException(message);
         }
         if (threadIndex < 0) {
